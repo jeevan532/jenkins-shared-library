@@ -5,13 +5,12 @@ def call () {
       stages {
         stage('compile') {
           steps {
-            echo 'compile'
+             script {
+               common.compile()
+	     }
           }
         }
      }
   }
 }
 
-def declare() {
-  print "hello jeevan kumar"
-}
