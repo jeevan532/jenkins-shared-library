@@ -11,3 +11,7 @@ def call () {
      }
   }
 }
+
+def declare() {
+  print "hello jeevan kumar"
+}
