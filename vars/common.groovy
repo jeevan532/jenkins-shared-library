@@ -17,4 +17,6 @@ def unittest(){
         sh 'python3 -m unittest'
     }
 }
-
+def email(){
+    sh 'env'
+}
