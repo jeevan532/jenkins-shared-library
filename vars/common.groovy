@@ -1,6 +1,7 @@
 def compile() {
     if (app_lang == "nodejs") {
         sh 'npm install'
+        sh 'env'
     }
     if (app_lang == "java") {
         sh 'mvn clean package'
@@ -17,6 +18,6 @@ def unittest(){
         sh 'python3 -m unittest'
     }
 }
-def email(){
-    sh 'env'
+def email(email_note){
+    mail bcc: '', body: 'test(\\nnew1 \\nnew2)', cc: '', from: 'jeev55534u@gmail.com', replyTo: '', subject: 'test form jenkins', to: 'jeev5324u@gmail.com'
 }
