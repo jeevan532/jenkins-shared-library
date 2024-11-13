@@ -1,6 +1,6 @@
 def call () {
     try {
-        node ('workstation') {
+        node ('agent') {
             stage ('clean workspace') {
                 cleanWs()
             }
