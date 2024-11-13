@@ -4,22 +4,26 @@ def call () {
          agent {
              label 'workstation'
          }
-         stages {
-             stage('compile') {
-                 steps {
-                     script {
-                         common.compile()
-                     }
-                 }
-             }
-             stage('unit test') {
-                 steps {
-                     script {
-                         common.unittest()
-                     }
-                 }
-             }
+//         stages {
+//             stage('compile') {
+//                 steps {
+//                     script {
+//                         common.compile()
+//                     }
+//                 }
+//             }
+//             stage('unit test') {
+//                 steps {
+//                     script {
+//                         common.unittest()
+//                     }
+//                 }
+//             }
              stage('quality control'){
+                 environment {
+                     sonarqube.user= "aws ssm get-parameter \ --name sonarqube.user --region us-east-1 "
+                 }
+
                  steps {
                      sh "sonar-scanner -X -Dsonar.host.url=http://172.31.43.149:9000 -Dsonar.login=admin -Dsonar.password=Jeevan@05324u -Dsonar.projectKey=${component} "
                  }
@@ -27,8 +31,8 @@ def call () {
          }
      }
  }
-     catch(Exception e) {
-         common.email(e,'failed')
+catch(Exception e) {
+    common.email(e,'failed')
      }
 }
 
