@@ -17,7 +17,8 @@ def call () {
             }
         }
     }  catch (Exception e) {
-       common.email(e,'failed')
+//       common.email(e,'failed')
+        echo "test failed"
     }
 }
 
